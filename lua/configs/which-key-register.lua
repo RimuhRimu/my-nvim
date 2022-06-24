@@ -4,17 +4,18 @@ if status_ok then
   local mappings = {
     n = {
       ["<leader>"] = {
-        f = { name = "File" },
+        f = { name = "File and Truezen" },
         p = { name = "Packer" },
         l = { name = "LSP" },
-        g = { g = {
-          name = "Git"
-        } },
+        b = { name = "Close"},
       },
     },
   }
 
   local extra_sections = {
+    K = "cheatsheet",
+    g = "Git",
+    n = "Neo-tree",
     s = "Search",
     S = "Session",
     t = "Terminal",
@@ -24,6 +25,10 @@ if status_ok then
     if not mappings[mode][prefix][idx] then
       mappings[mode][prefix][idx] = { name = extra_sections[idx] }
     end
+  end
+
+  if is_available "bufferline" then
+    init_table("n", "<leader>", "b")
   end
 
   if is_available "neovim-session-manager" then

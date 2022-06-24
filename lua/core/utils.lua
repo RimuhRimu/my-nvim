@@ -82,16 +82,4 @@ function utils.is_available(plugin)
   return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
 end
 
-function utils.add_cmp_source(source, priority)
-  if type(priority) ~= "number" then
-    priority = 1000
-  end
-  local cmp_avail, cmp = pcall(require, "cmp")
-  if cmp_avail then
-    local config = cmp.get_config()
-    table.insert(config.sources, { name = source, priority = priority })
-    cmp.setup(config)
-  end
-end
-
 return utils

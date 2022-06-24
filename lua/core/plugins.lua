@@ -170,12 +170,13 @@ local plugins = {
   -- Built-in LSP
   {
     "neovim/nvim-lspconfig",
-    after = "nvim-lsp-installer",
+    event = "VimEnter",
   },
 
   -- LSP manager
   {
     "williamboman/nvim-lsp-installer",
+    after = "nvim-lspconfig",
     config = function()
       require("configs.nvim-lsp-installer").config()
     end,

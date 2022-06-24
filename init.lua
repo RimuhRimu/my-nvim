@@ -7,7 +7,9 @@ for _, source in ipairs{
   "core.utils",
   "core.options",
   "core.plugins",
+  "configs.lsp.init",
   "core.maps",
+  "configs.which-key-register",
 } do
   local is_ok, fault = pcall(require, source)
   if not is_ok then
