@@ -85,6 +85,15 @@ local plugins = {
     end,
   },
 
+  -- Required by choose win feature of Neo tree
+  {
+    's1n7ax/nvim-window-picker',
+    tag = 'v1.*',
+    config = function()
+        require'window-picker'.setup()
+    end,
+  },
+
   -- Statusline
   {
     "nvim-lualine/lualine.nvim",
