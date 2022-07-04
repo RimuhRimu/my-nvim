@@ -5,6 +5,7 @@ map("", "<Space>", "<Nop>")
 -- Normal --
 -- Standard Operations
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
+map("n", "<leader>wa", "<cmd>w<cr>", { desc = "Save all buffers" })
 map("n", "<leader>wq", "<cmd>wq<cr>", { desc = "Save and quit" })
 map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 map("n", "<leader>0", "<cmd>nohlsearch<cr>", { desc = "No Highlight" })
