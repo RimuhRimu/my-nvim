@@ -10,18 +10,10 @@ for _, source in ipairs{
   "configs.lsp.init",
   "core.maps",
   "configs.which-key-register",
+  "core.theme",
 } do
   local is_ok, fault = pcall(require, source)
   if not is_ok then
     error("Failed to load ".. source .. "\n\n" .. fault)
   end
 end
-
-local myTheme = "tokyonight"
-local myTheme_is_available,_ = pcall(require,myTheme)
-local theme = "default"
-if myTheme_is_available then
-  theme = myTheme
-end
-
-vim.api.nvim_command(("colorscheme %s"):format(theme))
