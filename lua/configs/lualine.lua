@@ -66,8 +66,8 @@ function M.config()
       infos = ' ',
       hints = ' ',
 
-      lsp = '   LSP',
-      git = ''
+      lsp = ' LSP: ',
+      git = ''
   }
 
   local config = {
@@ -84,7 +84,7 @@ function M.config()
         {
           "branch",
           icon = icons.git,
-          color = { fg = colors.purple, gui = "bold" },
+          color = { fg = colors.blue, gui = "italic" },
           padding = { left = 2, right = 1 },
         },
         {
