@@ -115,7 +115,7 @@ end
 map('n','<leader><Leader>gc',':Git commit<CR>', { desc = "Git commit"})
 map('n','<leader><Leader>gsh',':Git push<CR>', { desc = "Git push"})
 map('n','<leader><Leader>gll',':Git pull<CR>', { desc = "Git pull"})
-map('n','<leader><Leader>gs',':Git status<CR>', { desc = "Git status"})
+map('n','<leader><Leader>gss',':Git status<CR>', { desc = "Git status"})
 map('n','<leader><Leader>gb',':Git blame<CR>', { desc = "Git blame"})
 map('n','<leader><Leader>gd',':Git diff<CR>', { desc = "Git diff"})
 map('n','<leader><Leader>gr',':Git remove<CR>', { desc = "Git remove"})
