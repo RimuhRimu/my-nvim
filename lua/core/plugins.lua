@@ -89,9 +89,6 @@ local plugins = {
   {
     's1n7ax/nvim-window-picker',
     tag = 'v1.*',
-    config = function()
-        require'window-picker'.setup()
-    end,
   },
 
   -- Statusline
@@ -364,7 +361,7 @@ local plugins = {
 
   -- Choose win with <leader>a
   {
-    "t9md/vim-choosewin"
+    "t9md/vim-choosewin",
   },
 
   -- Go integration
@@ -400,6 +397,17 @@ local plugins = {
   -- Get documentation inside nvim
   {
     "dbeniamine/cheat.sh-vim"
+  },
+
+  -- Rest API
+
+  {
+    "NTBBloodbath/rest.nvim",
+    module = "rest",
+    after = "plenary",
+    setup = function ()
+      require("configs.rest").setup()
+    end
   },
 
   -- Copilot is optional
