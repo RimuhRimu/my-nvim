@@ -5,7 +5,7 @@ map("", "<Space>", "<Nop>")
 -- Normal --
 -- Standard Operations
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
-map("n", "<leader>wa", "<cmd>w<cr>", { desc = "Save all buffers" })
+map("n", "<leader>wa", "<cmd>wa<cr>", { desc = "Save all buffers" })
 map("n", "<leader>wq", "<cmd>wq<cr>", { desc = "Save and quit" })
 map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 map("n", "<leader>0", "<cmd>nohlsearch<cr>", { desc = "No Highlight" })
@@ -38,12 +38,16 @@ map('n','<Leader>v',':<C-u>vsplit<CR>', { desc = "Split verticaly" })
 
 map('n','<Leader>shv','<cmd>vs term://$SHELL<CR>', { desc = "Split a term verticaly" })
 map('n','<Leader>shj','<cmd>terminal<CR>', { desc = "Split a term horizontaly" })
-map('n','<Leader>a','<cmd>ChooseWin<CR>', { desc = "ChooseWin" })
+map('n','<Leader>a','<cmd>ChooseWin<CR>', { desc = "Pick a window" })
 
 -- Dashboard
 if utils.is_available "dashboard-nvim" then
   map("n", "<leader>d", "<cmd>Dashboard<cr>", { desc = "Dashboard" })
 end
+
+-- JSdoc
+
+map("n", "<leader><leader>l", "<cmd>JsDocFormat<cr>", { desc = "Format js" })
 
 -- Bufdelete
 if utils.is_available "bufdelete.nvim" then
@@ -164,10 +168,10 @@ if utils.is_available "smart-splits.nvim" then
   end, { desc = "Move to right split" })
 
   -- Resize with arrows
-  map("n", "<C-Up>", function()
+  map("n", "<C-j>", function()
     require("smart-splits").resize_up()
   end, { desc = "Resize split up" })
-  map("n", "<C-Down>", function()
+  map("n", "<C-k>", function()
     require("smart-splits").resize_down()
   end, { desc = "Resize split down" })
   map("n", "<C-Left>", function()
@@ -181,8 +185,8 @@ else
   map("n", "<A-j>", "<C-w>j", { desc = "Move to below split" })
   map("n", "<A-k>", "<C-w>k", { desc = "Move to above split" })
   map("n", "<A-l>", "<C-w>l", { desc = "Move to right split" })
-  map("n", "<C-Up>", "<cmd>resize -2<CR>", { desc = "Resize split up" })
-  map("n", "<C-Down>", "<cmd>resize +2<CR>", { desc = "Resize split down" })
+  map("n", "<C-j>", "<cmd>resize -2<CR>", { desc = "Resize split up" })
+  map("n", "<C-k>", "<cmd>resize +2<CR>", { desc = "Resize split down" })
   map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Resize split left" })
   map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Resize split right" })
 end
@@ -257,6 +261,12 @@ if utils.is_available "telescope.nvim" then
     require("telescope.builtin").diagnostics()
   end, { desc = "Search diagnostics" })
 end
+
+-- Rest API
+
+map("n","<leader><leader>r", "<Plug>RestNvim", { desc = "Make a http resquest" })
+map("n","<leader><leader>rp", "<Plug>RestNvimPreview", { desc = "Preview the request CURL command" })
+map("n","<leader><leader>rr", "<Plug>RestNvimLast", { desc = "Rerun the las request" })
 
 -- Terminal
 if utils.is_available "nvim-toggleterm.lua" then
