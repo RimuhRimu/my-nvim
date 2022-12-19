@@ -111,7 +111,10 @@ local plugins = {
   -- Syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
     event = { "BufRead", "BufNewFile" },
     cmd = {
       "TSInstall",
@@ -192,6 +195,7 @@ local plugins = {
   {
     "stevearc/aerial.nvim",
     module = "aerial",
+    branch = "nvim-0.5",
     cmd = { "AerialToggle", "AerialOpen", "AerialInfo" },
     config = function()
       require("configs.aerial").config()
@@ -379,6 +383,7 @@ local plugins = {
   {
     "folke/todo-comments.nvim",
     event = "BufEnter",
+    branch = "neovim-pre-0.8.0",
     setup = require("configs.todo-comments").setup()
   },
 
@@ -410,26 +415,25 @@ local plugins = {
     end
   },
 
-  -- Copilot is optional
-  {
-    "gelfand/copilot.vim",
-    config = function()
-      vim.g.copilot_no_tab_map = true
-      vim.g.copilot_assume_mapped = true
-      vim.g.copilot_filetypes = {
-        ["*"] = false,
-        ["javascript"] = true,
-        ["typescript"] = true,
-        ["lua"] = true,
-        ["rust"] = true,
-        ["c"] = true,
-        ["c#"] = true,
-        ["c++"] = true,
-        ["go"] = true,
-        ["python"] = true,
-      }
-    end
-  },
+  -- {
+  --   "gelfand/copilot.vim",
+  --   config = function()
+  --     vim.g.copilot_no_tab_map = true
+  --     vim.g.copilot_assume_mapped = true
+  --     vim.g.copilot_filetypes = {
+  --       ["*"] = false,
+  --       ["javascript"] = true,
+  --       ["typescript"] = true,
+  --       ["lua"] = true,
+  --       ["rust"] = true,
+  --       ["c"] = true,
+  --       ["c#"] = true,
+  --       ["c++"] = true,
+  --       ["go"] = true,
+  --       ["python"] = true,
+  --     }
+  --   end
+  -- },
 }
 
 local packer = utils.initialize_packer()
