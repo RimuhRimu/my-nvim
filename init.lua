@@ -10,7 +10,9 @@ for _, source in ipairs{
   "configs.lsp.init",
   "core.maps",
   "configs.which-key-register",
+  "core.autocmd",
   "core.theme",
+  "core.globals"
 } do
   local is_ok, fault = pcall(require, source)
   if not is_ok then

@@ -4,6 +4,7 @@ local M = {}
 map("", "<Space>", "<Nop>")
 -- Normal --
 -- Standard Operations
+map("n", "<leader>m", "<cmd>mess<cr>", { desc = "Show messages" })
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 map("n", "<leader>wa", "<cmd>wa<cr>", { desc = "Save all buffers" })
 map("n", "<leader>wq", "<cmd>wq<cr>", { desc = "Save and quit" })
@@ -48,6 +49,13 @@ end
 -- JSdoc
 
 map("n", "<leader><leader>l", "<cmd>JsDocFormat<cr>", { desc = "Format js" })
+
+-- Hop
+
+map("n", "<leader><leader>w", "<cmd>HopWord<cr>", { desc = "Hop word" })
+map("n", "<leader><leader>bc", "<cmd>HopWordBC<cr>", { desc = "Hop word before cursor" })
+map("n", "<leader><leader>ac", "<cmd>HopWord<cr>", { desc = "Hop word after cursor" })
+map("n", "<leader><leader>p", "<cmd>HopPattern<cr>", { desc = "Hop Pattern" })
 
 -- Bufdelete
 if utils.is_available "bufdelete.nvim" then
@@ -118,7 +126,8 @@ map('n','<leader><Leader>gll',':Git pull<CR>', { desc = "Git pull"})
 map('n','<leader><Leader>gss',':Git status<CR>', { desc = "Git status"})
 map('n','<leader><Leader>gb',':Git blame<CR>', { desc = "Git blame"})
 map('n','<leader><Leader>gd',':Git diff<CR>', { desc = "Git diff"})
-map('n','<leader><Leader>gr',':Git remove<CR>', { desc = "Git remove"})
+map('n','<leader><Leader>grr',':Git restore<CR>', { desc = "Git restore"})
+map('n','<leader><Leader>grs',':!git restore --staged %<CR>', { desc = "Git restore staged"})
 map('n','<leader><Leader>g',':Git<CR>', { desc = "Git"})
 map('n','<leader><Leader>gad',':Git add .<CR>', { desc = "Git add EVERYTHING"})
 map('n','<leader><Leader>gfd',':Git add %<CR>', { desc = "Git add this file"})
@@ -213,6 +222,9 @@ if utils.is_available "telescope.nvim" then
   map("n", "<leader>ff", function()
     require("telescope.builtin").find_files()
   end, { desc = "Search files" })
+  map("n", "<leader>fi", function()
+    require("telescope").extensions.file_browser.file_browser()
+  end, { desc = "Files Browser" })
   map("n", "<leader>fb", function()
     require("telescope.builtin").buffers()
   end, { desc = "Search buffers" })
@@ -306,5 +318,9 @@ map("t", "<A-h>", "<c-\\><c-n><c-w>h", { desc = "Terminal left window navigation
 map("t", "<A-j>", "<c-\\><c-n><c-w>j", { desc = "Terminal down window navigation" })
 map("t", "<A-k>", "<c-\\><c-n><c-w>k", { desc = "Terminal up window navigation" })
 map("t", "<A-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window naviation" })
+
+-- Plenary
+
+map("n", "<leader>sp","<Plug>PlenaryTestFile")
 
 return M

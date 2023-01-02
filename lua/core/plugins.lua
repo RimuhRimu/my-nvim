@@ -87,8 +87,11 @@ local plugins = {
 
   -- Required by choose win feature of Neo tree
   {
-    's1n7ax/nvim-window-picker',
-    tag = 'v1.*',
+    "s1n7ax/nvim-window-picker",
+    tag = "v1.*",
+    config = function()
+        require"window-picker".setup()
+    end
   },
 
   -- Statusline
@@ -112,10 +115,11 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     run = function()
-            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
             ts_update()
         end,
     event = { "BufRead", "BufNewFile" },
+    tag = "v0.7.2",
     cmd = {
       "TSInstall",
       "TSInstallInfo",
@@ -195,7 +199,6 @@ local plugins = {
   {
     "stevearc/aerial.nvim",
     module = "aerial",
-    branch = "nvim-0.5",
     cmd = { "AerialToggle", "AerialOpen", "AerialInfo" },
     config = function()
       require("configs.aerial").config()
@@ -229,6 +232,10 @@ local plugins = {
     config = function()
       require("telescope").load_extension(vim.fn.has "win32" == 1 and "fzy_native" or "fzf")
     end,
+  },
+
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
   },
 
   -- Git integration
@@ -353,9 +360,13 @@ local plugins = {
     end
   },
 
-  -- Jump to with <leader><leader> w or b
   {
-    "easymotion/vim-easymotion"
+    "phaazon/hop.nvim",
+    branch = "v2", -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require("configs.hop").config()
+    end
   },
 
   -- Multi cursor
@@ -375,8 +386,8 @@ local plugins = {
 
   -- JS conde formating
   {
-    'heavenshell/vim-jsdoc',
-    run = 'make install'
+    "heavenshell/vim-jsdoc",
+    run = "make install"
   },
 
   -- NOTE pretty comments
@@ -396,7 +407,7 @@ local plugins = {
   {
     "tpope/vim-fugitive",
     cmd = "Git",
-    requires = 'tpope/vim-rhubarb'
+    requires = "tpope/vim-rhubarb"
   },
 
   -- Get documentation inside nvim
@@ -409,11 +420,26 @@ local plugins = {
   {
     "NTBBloodbath/rest.nvim",
     module = "rest",
-    after = "plenary",
     setup = function ()
       require("configs.rest").setup()
     end
   },
+
+  -- Lua docs plug
+
+  {
+    "nanotee/luv-vimdocs"
+  },
+
+  {
+    "milisims/nvim-luaref"
+  },
+
+  --
+
+  {
+    "~/dev/workspace/stackmap/"
+  }
 
   -- {
   --   "gelfand/copilot.vim",

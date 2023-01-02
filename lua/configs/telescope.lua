@@ -5,15 +5,17 @@ function M.config()
   if status_ok then
     local actions = require "telescope.actions"
 
+    -- load extensions
     local notify_present, _ = pcall(require, "notify")
     if notify_present then
       telescope.load_extension "notify"
     end
 
+
     telescope.setup({
       defaults = {
 
-        prompt_prefix = " ",
+        prompt_prefix = "   ",
         selection_caret = "❯ ",
         path_display = { "truncate" },
         selection_strategy = "reset",
@@ -97,11 +99,12 @@ function M.config()
       },
       pickers = {
         find_files = {
-          find_command = { "fdfind", "--type=file", "--hidden", "--follow", "--exclude=.git"}
+          find_command = { "fd", "--type=file", "--hidden", "--follow", "--exclude=.git"}
         },
       },
       extensions = {},
     })
+    telescope.load_extension("file_browser")
   end
 end
 
