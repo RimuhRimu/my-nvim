@@ -19,12 +19,12 @@ if status_ok and installer_avail then
         end,
         capabilities = tbl_deep_extend("force", handlers.capabilities, lspconfig[server.name].capabilities or {}),
       }
-      
+
       local present, av_overrides = pcall(require, "configs.lsp.server-settings." .. server.name)
       if present then
         opts = tbl_deep_extend("force", av_overrides, opts)
       end
-      
+
       lspconfig[server.name].setup(opts)
     end
   end

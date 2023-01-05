@@ -3,7 +3,7 @@ local M = {}
 function M.config()
   local status_ok, indent_blankline = pcall(require, "indent_blankline")
   if status_ok then
-    indent_blankline.setup({
+    indent_blankline.setup {
       buftype_exclude = {
         "nofile",
         "terminal",
@@ -48,7 +48,7 @@ function M.config()
       use_treesitter = true,
       char = "▏",
       show_current_context = true,
-    })
+    }
   end
 end
 

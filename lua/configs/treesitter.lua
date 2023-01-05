@@ -3,8 +3,8 @@ local M = {}
 function M.config()
   local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
   if status_ok then
-    treesitter.setup({
-      ensure_installed = { "http", "json", "javascript", "python", "lua", "css", "html", "typescript"},
+    treesitter.setup {
+      ensure_installed = { "http", "json", "javascript", "python", "lua", "css", "html", "typescript" },
       sync_install = false,
       ignore_install = {},
       highlight = {
@@ -33,7 +33,7 @@ function M.config()
       autotag = {
         enable = true,
       },
-    })
+    }
   end
 end
 

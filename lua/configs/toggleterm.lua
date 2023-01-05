@@ -3,7 +3,7 @@ local M = {}
 function M.config()
   local status_ok, toggleterm = pcall(require, "toggleterm")
   if status_ok then
-    toggleterm.setup({
+    toggleterm.setup {
       size = 10,
       open_mapping = [[<c-\>]],
       shading_factor = 2,
@@ -15,7 +15,7 @@ function M.config()
           background = "Normal",
         },
       },
-    })
+    }
   end
 end
 

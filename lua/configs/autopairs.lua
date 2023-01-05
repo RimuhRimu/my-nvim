@@ -3,7 +3,7 @@ local M = {}
 function M.config()
   local status_ok, npairs = pcall(require, "nvim-autopairs")
   if status_ok then
-    npairs.setup({
+    npairs.setup {
       check_ts = true,
       ts_config = {
         lua = { "string", "source" },
@@ -22,7 +22,7 @@ function M.config()
         highlight = "PmenuSel",
         highlight_grey = "LineNr",
       },
-    })
+    }
 
     local cmp_status_ok, cmp = pcall(require, "cmp")
     if cmp_status_ok then

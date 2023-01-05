@@ -3,7 +3,7 @@ local M = {}
 function M.config()
   local status_ok, bufferline = pcall(require, "bufferline")
   if status_ok then
-    bufferline.setup({
+    bufferline.setup {
       options = {
         offsets = {
           { filetype = "NvimTree", text = "", padding = 1 },
@@ -18,7 +18,7 @@ function M.config()
         tab_size = 20,
         separator_style = "thin",
       },
-    })
+    }
   end
 end
 

@@ -10,17 +10,15 @@ map("n", "<leader>wa", "<cmd>wa<cr>", { desc = "Save all buffers" })
 map("n", "<leader>wq", "<cmd>wq<cr>", { desc = "Save and quit" })
 map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 map("n", "<leader>0", "<cmd>nohlsearch<cr>", { desc = "No Highlight" })
-map("n", "<leader>u", function()
-  utils.toggle_url_match()
-end, { desc = "Toggle URL Highlights" })
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+map("n", "<leader><leader>x", "<cmd>w<cr><cmd>source %<cr>", { desc = "Save and source file" })
 map("n", "gx", function()
   utils.open_url()
 end, { desc = "Open the file under cursor with system app" })
 map("n", "<leader>ww", "<cmd>w!<cr>", { desc = "Force write" })
 map("n", "<leader>qq", "<cmd>q!<cr>", { desc = "Force quit" })
 map("n", "Q", "<Nop>")
-map('n','<S-t>','<cmd>tabnew<CR>')
+map("n", "<S-t>", "<cmd>tabnew<CR>")
 -- Packer
 map("n", "<leader>pc", "<cmd>PackerCompile<cr>", { desc = "Packer Compile" })
 map("n", "<leader>pi", "<cmd>PackerInstall<cr>", { desc = "Packer Install" })
@@ -34,12 +32,12 @@ map("n", "<leader>fx", "<cmd>TZMinimalist<CR>", { desc = "TrueZen Minimalist" })
 
 -- Split
 
-map('n','<Leader>h',':<C-u>split<CR>', { desc = "Split horizontaly" })
-map('n','<Leader>v',':<C-u>vsplit<CR>', { desc = "Split verticaly" })
+map("n", "<Leader>h", ":<C-u>split<CR>", { desc = "Split horizontaly" })
+map("n", "<Leader>v", ":<C-u>vsplit<CR>", { desc = "Split verticaly" })
 
-map('n','<Leader>shv','<cmd>vs term://$SHELL<CR>', { desc = "Split a term verticaly" })
-map('n','<Leader>shj','<cmd>terminal<CR>', { desc = "Split a term horizontaly" })
-map('n','<Leader>a','<cmd>ChooseWin<CR>', { desc = "Pick a window" })
+map("n", "<Leader>shv", "<cmd>vs term://$SHELL<CR>", { desc = "Split a term verticaly" })
+map("n", "<Leader>shj", "<cmd>terminal<CR>", { desc = "Split a term horizontaly" })
+map("n", "<Leader>a", "<cmd>ChooseWin<CR>", { desc = "Pick a window" })
 
 -- Dashboard
 if utils.is_available "dashboard-nvim" then
@@ -58,11 +56,7 @@ map("n", "<leader><leader>ac", "<cmd>HopWord<cr>", { desc = "Hop word after curs
 map("n", "<leader><leader>p", "<cmd>HopPattern<cr>", { desc = "Hop Pattern" })
 
 -- Bufdelete
-if utils.is_available "bufdelete.nvim" then
-  map("n", "<leader>bc", "<cmd>Bdelete<cr>", { desc = "Close buffer" })
-else
-  map("n", "<leader>bc", "<cmd>bdelete<cr>", { desc = "Close buffer" })
-end
+map("n", "<leader>bc", "<cmd>bd!<cr>", { desc = "Close buffer" })
 
 -- Navigate buffers
 if utils.is_available "bufferline.nvim" then
@@ -73,19 +67,6 @@ if utils.is_available "bufferline.nvim" then
 else
   map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
   map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
-end
-
--- Comment
-if utils.is_available "Comment.nvim" then
-  map("n", "<leader>ct", function()
-    require("Comment.api").toggle_current_linewise()
-  end, { desc = "Comment line" })
-  map(
-    "v",
-    "<leader>ct",
-    "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>",
-    { desc = "Toggle comment line" }
-  )
 end
 
 -- GitSigns
@@ -120,19 +101,19 @@ if utils.is_available "gitsigns.nvim" then
 end
 
 --Git
-map('n','<leader><Leader>gc',':Git commit<CR>', { desc = "Git commit"})
-map('n','<leader><Leader>gsh',':Git push<CR>', { desc = "Git push"})
-map('n','<leader><Leader>gll',':Git pull<CR>', { desc = "Git pull"})
-map('n','<leader><Leader>gss',':Git status<CR>', { desc = "Git status"})
-map('n','<leader><Leader>gb',':Git blame<CR>', { desc = "Git blame"})
-map('n','<leader><Leader>gd',':Git diff<CR>', { desc = "Git diff"})
-map('n','<leader><Leader>grr',':Git restore<CR>', { desc = "Git restore"})
-map('n','<leader><Leader>grs',':!git restore --staged %<CR>', { desc = "Git restore staged"})
-map('n','<leader><Leader>g',':Git<CR>', { desc = "Git"})
-map('n','<leader><Leader>gad',':Git add .<CR>', { desc = "Git add EVERYTHING"})
-map('n','<leader><Leader>gfd',':Git add %<CR>', { desc = "Git add this file"})
-map('n','<leader><Leader>ggo',':GBrowse<CR>', { desc = "Git browse"})
-map('n','<leader><Leader>go',':Git log<CR>', { desc = "Git log"})
+map("n", "<leader><Leader>gc", ":Git commit<CR>", { desc = "Git commit" })
+map("n", "<leader><Leader>gsh", ":Git push<CR>", { desc = "Git push" })
+map("n", "<leader><Leader>gll", ":Git pull<CR>", { desc = "Git pull" })
+map("n", "<leader><Leader>gss", ":Git status<CR>", { desc = "Git status" })
+map("n", "<leader><Leader>gb", ":Git blame<CR>", { desc = "Git blame" })
+map("n", "<leader><Leader>gd", ":Git diff<CR>", { desc = "Git diff" })
+map("n", "<leader><Leader>grr", ":Git restore<CR>", { desc = "Git restore" })
+map("n", "<leader><Leader>grs", ":!git restore --staged %<CR>", { desc = "Git restore staged" })
+map("n", "<leader><Leader>g", ":Git<CR>", { desc = "Git" })
+map("n", "<leader><Leader>gad", ":Git add .<CR>", { desc = "Git add EVERYTHING" })
+map("n", "<leader><Leader>gfd", ":Git add %<CR>", { desc = "Git add this file" })
+map("n", "<leader><Leader>ggo", ":GBrowse<CR>", { desc = "Git browse" })
+map("n", "<leader><Leader>go", ":Git log<CR>", { desc = "Git log" })
 
 -- NeoTree
 if utils.is_available "neo-tree.nvim" then
@@ -276,9 +257,9 @@ end
 
 -- Rest API
 
-map("n","<leader><leader>r", "<Plug>RestNvim", { desc = "Make a http resquest" })
-map("n","<leader><leader>rp", "<Plug>RestNvimPreview", { desc = "Preview the request CURL command" })
-map("n","<leader><leader>rr", "<Plug>RestNvimLast", { desc = "Rerun the las request" })
+map("n", "<leader><leader>r", "<Plug>RestNvim", { desc = "Make a http resquest" })
+map("n", "<leader><leader>rp", "<Plug>RestNvimPreview", { desc = "Preview the request CURL command" })
+map("n", "<leader><leader>rr", "<Plug>RestNvimLast", { desc = "Rerun the las request" })
 
 -- Terminal
 if utils.is_available "nvim-toggleterm.lua" then
@@ -321,6 +302,6 @@ map("t", "<A-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window naviation
 
 -- Plenary
 
-map("n", "<leader>sp","<Plug>PlenaryTestFile")
+map("n", "<leader>sp", "<Plug>PlenaryTestFile")
 
 return M
