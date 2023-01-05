@@ -3,7 +3,7 @@ local M = {}
 function M.config()
   local status_ok, Comment = pcall(require, "Comment")
   if status_ok then
-    Comment.setup({
+    Comment.setup {
       pre_hook = function(ctx)
         local U = require "Comment.utils"
 
@@ -19,7 +19,7 @@ function M.config()
           location = location,
         }
       end,
-    })
+    }
   end
 end
 

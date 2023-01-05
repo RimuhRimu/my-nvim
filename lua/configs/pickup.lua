@@ -1,9 +1,9 @@
 local M = {}
 
-M.config = function ()
+M.config = function()
   local pickup_is_available, pickup = pcall(require, "nvim-window-picker")
   if pickup_is_available then
-    pickup.setup({
+    pickup.setup {
       autoselect_one = true,
       include_current_win = true,
       selection_chars = "FJDKSLA;CMRUEIWOQP",
@@ -11,13 +11,13 @@ M.config = function ()
       filter_rules = {
         bo = {
           filetype = { "NvimTree", "neo-tree", "notify", "packer" },
-          buftype = { "terminal" }
-        }
+          buftype = { "terminal" },
+        },
       },
       fg_color = "#25db4a",
       current_win_hl_color = "#1a1b26",
       other_win_hl_color = "#24283d",
-    })
+    }
   end
 end
 

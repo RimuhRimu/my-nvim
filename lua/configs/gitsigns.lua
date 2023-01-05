@@ -3,7 +3,7 @@ local M = {}
 function M.config()
   local status_ok, gitsigns = pcall(require, "gitsigns")
   if status_ok then
-    gitsigns.setup({
+    gitsigns.setup {
       signs = {
         add = { text = "▎" },
         change = { text = "▎" },
@@ -11,7 +11,7 @@ function M.config()
         topdelete = { text = "契" },
         changedelete = { text = "▎" },
       },
-    })
+    }
   end
 end
 

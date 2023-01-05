@@ -15,7 +15,7 @@ function M.setup()
     sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
 
-  vim.diagnostic.config({
+  vim.diagnostic.config {
     virtual_text = true,
     signs = { active = signs },
     update_in_insert = true,
@@ -29,7 +29,7 @@ function M.setup()
       header = "",
       prefix = "",
     },
-  })
+  }
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 

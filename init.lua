@@ -3,7 +3,7 @@ if impatient_ok then
   impatient.enable_profile()
 end
 
-for _, source in ipairs{
+for _, source in ipairs {
   "core.utils",
   "core.options",
   "core.plugins",
@@ -12,13 +12,11 @@ for _, source in ipairs{
   "configs.which-key-register",
   "core.autocmd",
   "core.theme",
-  "core.globals"
+  "core.globals",
 } do
   local is_ok, fault = pcall(require, source)
   if not is_ok then
-    error("Failed to load ".. source .. "\n\n" .. fault)
+    error("Failed to load " .. source .. "\n\n" .. fault)
   end
 end
---FIX todo comments not working
---FIX folds not working
---FIX buffer close not working
+--FIX: buffer close not working

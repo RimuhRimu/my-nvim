@@ -11,8 +11,7 @@ function M.config()
       telescope.load_extension "notify"
     end
 
-
-    telescope.setup({
+    telescope.setup {
       defaults = {
 
         prompt_prefix = "   ",
@@ -99,12 +98,12 @@ function M.config()
       },
       pickers = {
         find_files = {
-          find_command = { "fd", "--type=file", "--hidden", "--follow", "--exclude=.git"}
+          find_command = { "fd", "--type=file", "--hidden", "--follow", "--exclude=.git" },
         },
       },
       extensions = {},
-    })
-    telescope.load_extension("file_browser")
+    }
+    telescope.load_extension "file_browser"
   end
 end
 

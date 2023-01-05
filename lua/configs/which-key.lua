@@ -14,7 +14,7 @@ function M.config()
         end
       end
     end
-    which_key.setup({
+    which_key.setup {
       plugins = {
         spelling = { enabled = true },
         presets = { operators = false },
@@ -23,7 +23,7 @@ function M.config()
         border = "rounded",
         padding = { 2, 2, 2, 2 },
       },
-    })
+    }
   end
 end
 
