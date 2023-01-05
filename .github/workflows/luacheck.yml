@@ -21,6 +21,4 @@ jobs:
       - name: Setup "luacheck"
         uses: lunarmodules/luacheck@v1.1.0
 
-      - name: Runs luacheck
-        run: luacheck .
       - run: echo "🍏 This job's status is ${{ job.status }}."
