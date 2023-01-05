@@ -1,9 +1,9 @@
-local is_available,rest = pcall(require,"rest-nvim")
+local is_available, rest = pcall(require, "rest-nvim")
 
 local M = {}
 
 if is_available then
-  M.setup = function ()
+  M.setup = function()
     local configs = {
       -- Open request results in a horizontal split
       result_split_horizontal = true,
@@ -24,7 +24,7 @@ if is_available then
       },
       -- Jump to request line on run
       jump_to_request = false,
-      env_file = '.env',
+      env_file = ".env",
       -- env_file = '.env.local',
       custom_dynamic_variables = {},
       yank_dry_run = true,

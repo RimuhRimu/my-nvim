@@ -42,32 +42,32 @@ function M.config()
   }
 
   local colors = {
-    bg       = '#202328',
-    fg       = '#bbc2cf',
-    yellow   = '#ECBE7B',
-    cyan     = '#008080',
-    darkblue = '#081633',
-    green    = '#98be65',
-    orange   = '#FF8800',
-    violet   = '#a9a1e1',
-    magenta  = '#c678dd',
-    purple   = '#c874fc',
-    blue     = '#51afef',
-    red      = '#ec5f67',
+    bg = "#202328",
+    fg = "#bbc2cf",
+    yellow = "#ECBE7B",
+    cyan = "#008080",
+    darkblue = "#081633",
+    green = "#98be65",
+    orange = "#FF8800",
+    violet = "#a9a1e1",
+    magenta = "#c678dd",
+    purple = "#c874fc",
+    blue = "#51afef",
+    red = "#ec5f67",
   }
 
   local icons = {
-      linux = ' ',
-      macos = ' ',
-      windows = ' ',
+    linux = " ",
+    macos = " ",
+    windows = " ",
 
-      errs = ' ',
-      warns = ' ',
-      infos = ' ',
-      hints = ' ',
+    errs = " ",
+    warns = " ",
+    infos = " ",
+    hints = " ",
 
-      lsp = ' LSP: ',
-      git = ''
+    lsp = " LSP: ",
+    git = "",
   }
 
   local config = {
@@ -111,8 +111,8 @@ function M.config()
         },
         {
           function()
-            local msg = 'No Active Lsp'
-            local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+            local msg = "No Active Lsp"
+            local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
             local clients = vim.lsp.get_active_clients()
             if next(clients) == nil then
               return msg
@@ -126,8 +126,8 @@ function M.config()
             return msg
           end,
           icon = icons.lsp,
-          color = { fg = '#ffffff', gui = 'bold' },
-        }
+          color = { fg = "#ffffff", gui = "bold" },
+        },
       },
       lualine_x = {
         {

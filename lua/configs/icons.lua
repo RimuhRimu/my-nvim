@@ -3,7 +3,7 @@ local M = {}
 function M.config()
   local status_ok, icons = pcall(require, "nvim-web-devicons")
   if status_ok then
-    icons.set_icon({
+    icons.set_icon {
       deb = { icon = "", name = "Deb" },
       lock = { icon = "", name = "Lock" },
       mp3 = { icon = "", name = "Mp3" },
@@ -16,7 +16,7 @@ function M.config()
       woff2 = { icon = "", name = "WebOpenFontFormat2" },
       xz = { icon = "", name = "Xz" },
       zip = { icon = "", name = "Zip" },
-    })
+    }
   end
 end
 

@@ -8,7 +8,7 @@ local options = {
     fileencoding = "utf-8", -- File content encoding for the buffer
     fillchars = { eob = " " }, -- Disable `~` on nonexistent lines
     foldmethod = "expr",
-    foldexpr = 'nvim_treesitter#foldexpr()',
+    foldexpr = "nvim_treesitter#foldexpr()",
     history = 100, -- Number of commands to remember in a history table
     ignorecase = true, -- Case insensitive searching
     laststatus = 3, -- globalstatus

@@ -90,8 +90,8 @@ local plugins = {
     "s1n7ax/nvim-window-picker",
     tag = "v1.*",
     config = function()
-        require"window-picker".setup()
-    end
+      require("window-picker").setup()
+    end,
   },
 
   -- Statusline
@@ -115,9 +115,9 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     run = function()
-            local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-            ts_update()
-        end,
+      local ts_update = require("nvim-treesitter.install").update { with_sync = true }
+      ts_update()
+    end,
     event = { "BufRead", "BufNewFile" },
     tag = "v0.7.2",
     cmd = {
@@ -208,7 +208,7 @@ local plugins = {
   -- Formatting and linting
   {
     "jose-elias-alvarez/null-ls.nvim",
-    config = function ()
+    config = function()
       require("configs.null-ls").config()
     end,
     event = { "BufRead", "BufNewFile" },
@@ -234,6 +234,7 @@ local plugins = {
     end,
   },
 
+  -- Telescope extensions
   {
     "nvim-telescope/telescope-file-browser.nvim",
   },
@@ -344,7 +345,7 @@ local plugins = {
 
   -- The BEST theme ever
 
-  { "folke/tokyonight.nvim", },
+  { "folke/tokyonight.nvim" },
 
   -- Focus layout
 
@@ -357,7 +358,7 @@ local plugins = {
     },
     setup = function()
       require("configs.true-zen").setup()
-    end
+    end,
   },
 
   {
@@ -366,12 +367,12 @@ local plugins = {
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
       require("configs.hop").config()
-    end
+    end,
   },
 
   -- Multi cursor
   {
-    "mg979/vim-visual-multi"
+    "mg979/vim-visual-multi",
   },
 
   -- Choose win with <leader>a
@@ -381,13 +382,13 @@ local plugins = {
 
   -- Go integration
   {
-    "crispgm/nvim-go"
+    "crispgm/nvim-go",
   },
 
   -- JS conde formating
   {
     "heavenshell/vim-jsdoc",
-    run = "make install"
+    run = "make install",
   },
 
   -- NOTE pretty comments
@@ -395,24 +396,30 @@ local plugins = {
     "folke/todo-comments.nvim",
     event = "BufEnter",
     branch = "neovim-pre-0.8.0",
-    setup = require("configs.todo-comments").setup()
+    config = function()
+      require("todo-comments").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end,
   },
 
   -- Emmet for HTML and CSS shortcuts
   {
-    "mattn/emmet-vim"
+    "mattn/emmet-vim",
   },
 
   -- Git commands
   {
     "tpope/vim-fugitive",
     cmd = "Git",
-    requires = "tpope/vim-rhubarb"
+    requires = "tpope/vim-rhubarb",
   },
 
   -- Get documentation inside nvim
   {
-    "dbeniamine/cheat.sh-vim"
+    "dbeniamine/cheat.sh-vim",
   },
 
   -- Rest API
@@ -420,26 +427,32 @@ local plugins = {
   {
     "NTBBloodbath/rest.nvim",
     module = "rest",
-    setup = function ()
+    setup = function()
       require("configs.rest").setup()
-    end
+    end,
   },
 
   -- Lua docs plug
 
   {
-    "nanotee/luv-vimdocs"
+    "nanotee/luv-vimdocs",
   },
 
   {
-    "milisims/nvim-luaref"
+    "milisims/nvim-luaref",
+  },
+
+  -- Stylua
+
+  {
+    "wesleimp/stylua.nvim",
   },
 
   --
 
   {
-    "~/dev/workspace/stackmap/"
-  }
+    "RimuhRimu/runthis.nvim",
+  },
 
   -- {
   --   "gelfand/copilot.vim",
@@ -488,6 +501,6 @@ packer.startup {
     },
     auto_clean = true,
     compile_on_sync = true,
-  }
+  },
 }
 utils.compiled()

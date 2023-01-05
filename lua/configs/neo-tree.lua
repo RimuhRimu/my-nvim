@@ -3,7 +3,7 @@ local M = {}
 function M.config()
   local status_ok, neotree = pcall(require, "neo-tree")
   if status_ok then
-    neotree.setup({
+    neotree.setup {
       popup_border_style = "rounded",
       enable_diagnostics = false,
       default_component_configs = {
@@ -70,7 +70,7 @@ function M.config()
           end,
         },
       },
-    })
+    }
   end
 end
 

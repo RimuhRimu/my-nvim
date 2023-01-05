@@ -7,7 +7,7 @@ if status_ok then
         f = { name = "File and Truezen" },
         p = { name = "Packer" },
         l = { name = "LSP" },
-        b = { name = "Close"},
+        b = { name = "Close" },
       },
     },
   }

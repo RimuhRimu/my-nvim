@@ -3,7 +3,7 @@ local M = {}
 function M.config()
   local present, aerial = pcall(require, "aerial")
   if present then
-    aerial.setup({
+    aerial.setup {
       close_behavior = "global",
       backends = { "lsp", "treesitter", "markdown" },
       min_width = 28,
@@ -51,7 +51,7 @@ function M.config()
         vim.keymap.set("n", "[[", "<cmd>AerialPrevUp<cr>", { buffer = bufnr, desc = "Jump up and backwards in Aerial" })
         vim.keymap.set("n", "]]", "<cmd>AerialNextUp<cr>", { buffer = bufnr, desc = "Jump up and forwards in Aerial" })
       end,
-    })
+    }
   end
 end
 
