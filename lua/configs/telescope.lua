@@ -104,6 +104,7 @@ function M.config()
       extensions = {},
     }
     telescope.load_extension "file_browser"
+    telescope.load_extension "dap"
   end
 end
 

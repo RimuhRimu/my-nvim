@@ -64,6 +64,7 @@ local plugins = {
   -- Bufferline
   {
     "akinsho/bufferline.nvim",
+    tag = "v2.*",
     after = "nvim-web-devicons",
     config = function()
       require("configs.bufferline").config()
@@ -79,10 +80,32 @@ local plugins = {
     branch = "v2.x",
     module = "neo-tree",
     cmd = "Neotree",
-    requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    requires = { "MunifTanjim/nui.nvim" },
     config = function()
       require("configs.neo-tree").config()
     end,
+  },
+
+  -- Debugger
+  {
+    "mfussenegger/nvim-dap",
+  },
+
+  { 
+    "rcarriga/nvim-dap-ui",
+  },
+
+  {
+    "nvim-telescope/telescope-dap.nvim"
+  },
+
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    module = "dap-text",
+  },
+
+  {
+    "mfussenegger/nvim-dap-python",
   },
 
   -- Required by choose win feature of Neo tree
@@ -198,6 +221,7 @@ local plugins = {
   -- LSP symbols
   {
     "stevearc/aerial.nvim",
+    branch = "nvim-0.5",
     module = "aerial",
     cmd = { "AerialToggle", "AerialOpen", "AerialInfo" },
     config = function()
@@ -277,6 +301,7 @@ local plugins = {
   -- Terminal
   {
     "akinsho/nvim-toggleterm.lua",
+    tag = "v1.*",
     cmd = "ToggleTerm",
     module = { "toggleterm", "toggleterm.terminal" },
     config = function()
@@ -451,7 +476,7 @@ local plugins = {
   --
 
   {
-    "RimuhRimu/runthis.nvim",
+    "~/dev/workspace/runthis.nvim",
   },
 
   -- {

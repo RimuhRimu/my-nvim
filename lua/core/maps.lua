@@ -18,7 +18,7 @@ end, { desc = "Open the file under cursor with system app" })
 map("n", "<leader>ww", "<cmd>w!<cr>", { desc = "Force write" })
 map("n", "<leader>qq", "<cmd>q!<cr>", { desc = "Force quit" })
 map("n", "Q", "<Nop>")
-map("n", "<S-t>", "<cmd>tabnew<CR>")
+map("n", "<S-t>", "<cmd>tabnew %<CR>")
 -- Packer
 map("n", "<leader>pc", "<cmd>PackerCompile<cr>", { desc = "Packer Compile" })
 map("n", "<leader>pi", "<cmd>PackerInstall<cr>", { desc = "Packer Install" })
@@ -206,6 +206,9 @@ if utils.is_available "telescope.nvim" then
   map("n", "<leader>fi", function()
     require("telescope").extensions.file_browser.file_browser()
   end, { desc = "Files Browser" })
+  map("n", "<leader>fd", function()
+    require("telescope").extensions.dap.commands()
+  end, { desc = "Open dap options" })
   map("n", "<leader>fb", function()
     require("telescope.builtin").buffers()
   end, { desc = "Search buffers" })
@@ -263,29 +266,11 @@ map("n", "<leader><leader>rr", "<Plug>RestNvimLast", { desc = "Rerun the las req
 
 -- Terminal
 if utils.is_available "nvim-toggleterm.lua" then
-  local toggle_term_cmd = utils.toggle_term_cmd
-  map("n", "<C-\\>", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
-  map("n", "<leader>gg", function()
-    toggle_term_cmd "lazygit"
-  end, { desc = "ToggleTerm lazygit" })
-  map("n", "<leader>tn", function()
-    toggle_term_cmd "node"
-  end, { desc = "ToggleTerm node" })
-  map("n", "<leader>tu", function()
-    toggle_term_cmd "ncdu"
-  end, { desc = "ToggleTerm NCDU" })
-  map("n", "<leader>tt", function()
-    toggle_term_cmd "htop"
-  end, { desc = "ToggleTerm htop" })
-  map("n", "<leader>tp", function()
-    toggle_term_cmd "python"
-  end, { desc = "ToggleTerm python" })
-  map("n", "<leader>tl", function()
-    toggle_term_cmd "lazygit"
-  end, { desc = "ToggleTerm lazygit" })
-  map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "ToggleTerm float" })
-  map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { desc = "ToggleTerm horizontal split" })
-  map("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", { desc = "ToggleTerm vertical split" })
+  for i = 1, 3, 1 do
+    map("n", ("<leader>tf%s"):format(i), ("<cmd>%sToggleTerm direction=float<cr>"):format(i), { desc = ("ToggleTerm float terminal %s"):format(i) })
+    map("n", ("<leader>th%s"):format(i), ("<cmd>%sToggleTerm size=10 direction=horizontal<cr>"):format(i), { desc = ("ToggleTerm horizontal split %s"):format(i) })
+    map("n", ("<leader>tv%s"):format(i), ("<cmd>%sToggleTerm size=80 direction=vertical<cr>"):format(i), { desc = ("ToggleTerm vertical split %s"):format(i) })
+  end
 end
 
 -- Stay in indent mode
@@ -303,5 +288,13 @@ map("t", "<A-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window naviation
 -- Plenary
 
 map("n", "<leader>sp", "<Plug>PlenaryTestFile")
+
+-- DAP
+
+map("n", "<leader><leader>dc", "<cmd>DapContinue<CR>")
+map("n", "<leader><leader>dsi", "<cmd>DapStepInto<CR>")
+map("n", "<leader><leader>dso", "<cmd>DapStepOver<CR>")
+map("n", "<leader><leader>dst", "<cmd>DapStepOut<CR>")
+map("n", "<leader><leader>dt", "<cmd>DapToggleBreakpoint<CR>")
 
 return M
