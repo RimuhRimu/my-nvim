@@ -19,4 +19,4 @@ for _, source in ipairs {
     error("Failed to load " .. source .. "\n\n" .. fault)
   end
 end
---FIX: buffer close not working
+-- FIX: buffer close not working

@@ -13,15 +13,6 @@ local plugins = {
   -- Popup API
   { "nvim-lua/popup.nvim" },
 
-  -- Indent detection
-  {
-    "Darazaki/indent-o-matic",
-    event = "BufRead",
-    config = function()
-      require("configs.indent-o-matic").config()
-    end,
-  },
-
   -- Notification Enhancer
   {
     "rcarriga/nvim-notify",
@@ -142,7 +133,6 @@ local plugins = {
       ts_update()
     end,
     event = { "BufRead", "BufNewFile" },
-    tag = "v0.7.2",
     cmd = {
       "TSInstall",
       "TSInstallInfo",
@@ -221,7 +211,6 @@ local plugins = {
   -- LSP symbols
   {
     "stevearc/aerial.nvim",
-    branch = "nvim-0.5",
     module = "aerial",
     cmd = { "AerialToggle", "AerialOpen", "AerialInfo" },
     config = function()
@@ -390,7 +379,6 @@ local plugins = {
     "phaazon/hop.nvim",
     branch = "v2", -- optional but strongly recommended
     config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
       require("configs.hop").config()
     end,
   },
@@ -420,7 +408,6 @@ local plugins = {
   {
     "folke/todo-comments.nvim",
     event = "BufEnter",
-    branch = "neovim-pre-0.8.0",
     config = function()
       require("todo-comments").setup {
         -- your configuration comes here
