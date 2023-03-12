@@ -152,7 +152,7 @@ function M.config()
           cond = nil,
         },
       },
-      lualine_y = {},
+      lualine_y = { "aerial" },
       lualine_z = { spacer },
     },
     inactive_sections = {

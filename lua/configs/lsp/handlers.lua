@@ -6,9 +6,9 @@ local map = vim.keymap.set
 function M.setup()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
+    { name = "DiagnosticSignWarn",  text = "" },
+    { name = "DiagnosticSignHint",  text = "" },
+    { name = "DiagnosticSignInfo",  text = "" },
   }
 
   for _, sign in ipairs(signs) do
@@ -36,23 +36,29 @@ function M.setup()
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 end
 
-local function lsp_highlight_document(client)
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-    vim.api.nvim_create_autocmd("CursorHold", {
-      group = "lsp_document_highlight",
-      pattern = "<buffer>",
-      callback = vim.lsp.buf.document_highlight,
-    })
-    vim.api.nvim_create_autocmd("CursorMoved", {
-      group = "lsp_document_highlight",
-      pattern = "<buffer>",
-      callback = vim.lsp.buf.clear_references,
-    })
-  end
+--[[ local function lsp_highlight_document(client) ]]
+--[[   P(client.server_capabilities) ]]
+--[[   P(client.resolved_capabilities) ]]
+--[[   if client.resolved_capabilities.document_highlight then ]]
+--[[     vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true }) ]]
+--[[     vim.api.nvim_create_autocmd("CursorHold", { ]]
+--[[       group = "lsp_document_highlight", ]]
+--[[       pattern = "<buffer>", ]]
+--[[       callback = vim.lsp.buf.document_highlight, ]]
+--[[     }) ]]
+--[[     vim.api.nvim_create_autocmd("CursorMoved", { ]]
+--[[       group = "lsp_document_highlight", ]]
+--[[       pattern = "<buffer>", ]]
+--[[       callback = vim.lsp.buf.clear_references, ]]
+--[[     }) ]]
+--[[   end ]]
+--[[ end ]]
+
+function M.myHandler(server_name)
+  require("lspconfig")[server_name].setup {}
 end
 
-M.on_attach = function(client, bufnr)
+M.on_attach = function(_, bufnr)
   map("n", "K", function()
     vim.lsp.buf.hover()
   end, { desc = "Hover symbol details", buffer = bufnr })
@@ -60,7 +66,7 @@ M.on_attach = function(client, bufnr)
     vim.lsp.buf.code_action()
   end, { desc = "LSP code action", buffer = bufnr })
   map("n", "<leader>lf", function()
-    vim.lsp.buf.formatting_sync()
+    vim.lsp.buf.format()
   end, { desc = "Format code", buffer = bufnr })
   map("n", "<leader>lh", function()
     vim.lsp.buf.signature_help()
@@ -96,15 +102,14 @@ M.on_attach = function(client, bufnr)
     vim.lsp.buf.formatting()
   end, { desc = "Format file with LSP" })
 
-  if client.name == "tsserver" or client.name == "jsonls" or client.name == "html" or client.name == "sumneko_lua" then
-    client.resolved_capabilities.document_formatting = false
-  end
-
-  local aerial_avail, aerial = pcall(require, "aerial")
-  if aerial_avail then
-    aerial.on_attach(client, bufnr)
-  end
-  lsp_highlight_document(client)
+  --[[ if client.name == "tsserver" or client.name == "jsonls" or client.name == "html" or client.name == "sumneko_lua" then ]]
+  --[[   client.resolved_capabilities.document_formatting = false ]]
+  --[[ end ]]
+  --[[ local aerial_avail, aerial = pcall(require, "aerial") ]]
+  --[[ if aerial_avail then ]]
+  --[[   aerial.on_attach(client, bufnr) ]]
+  --[[ end ]]
+  --[[ lsp_highlight_document(client) ]]
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -123,5 +128,4 @@ M.capabilities.textDocument.completion.completionItem.resolveSupport = {
     "additionalTextEdits",
   },
 }
-
 return M

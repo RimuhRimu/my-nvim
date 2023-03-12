@@ -4,6 +4,7 @@ if impatient_ok then
 end
 
 for _, source in ipairs {
+  "core.globals",
   "core.utils",
   "core.options",
   "core.plugins",
@@ -12,11 +13,10 @@ for _, source in ipairs {
   "configs.which-key-register",
   "core.autocmd",
   "core.theme",
-  "core.globals",
 } do
   local is_ok, fault = pcall(require, source)
   if not is_ok then
     error("Failed to load " .. source .. "\n\n" .. fault)
   end
 end
---FIX: buffer close not working
+-- FIX: buffer close not working

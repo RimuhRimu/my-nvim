@@ -11,6 +11,7 @@ map("n", "<leader>wq", "<cmd>wq<cr>", { desc = "Save and quit" })
 map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 map("n", "<leader>0", "<cmd>nohlsearch<cr>", { desc = "No Highlight" })
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+map("v", "<leader><leader>m", "<cmd>Man<cr>", { desc = "Manual of this" })
 map("n", "<leader><leader>x", "<cmd>w<cr><cmd>source %<cr>", { desc = "Save and source file" })
 map("n", "gx", function()
   utils.open_url()
@@ -118,7 +119,8 @@ map("n", "<leader><Leader>go", ":Git log<CR>", { desc = "Git log" })
 -- NeoTree
 if utils.is_available "neo-tree.nvim" then
   map("n", "<leader>nt", "<cmd>Neotree toggle<cr>", { desc = "Toggle Explorer" })
-  map("n", "<leader>no", "<cmd>Neotree focus<cr>", { desc = "Focus Explorer" })
+  map("n", "<leader>nb", "<cmd>Neotree buffers<cr>", { desc = "Toggle Explorer Buffers" })
+  map("n", "<leader>ng", "<cmd>Neotree git_status<cr>", { desc = "Toggle Explorer Git Status" })
 end
 
 -- Session Manager
@@ -137,8 +139,7 @@ end
 
 -- LSP Installer
 if utils.is_available "nvim-lsp-installer" then
-  map("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP information" })
-  map("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", { desc = "LSP installer" })
+  map("n", "<leader>lp", "<cmd>Mason<cr>", { desc = "LSP installer" })
 end
 
 -- Smart Splits

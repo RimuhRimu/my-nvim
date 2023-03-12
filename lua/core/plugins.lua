@@ -64,7 +64,6 @@ local plugins = {
   -- Bufferline
   {
     "akinsho/bufferline.nvim",
-    tag = "v2.*",
     after = "nvim-web-devicons",
     config = function()
       require("configs.bufferline").config()
@@ -77,7 +76,6 @@ local plugins = {
   -- File explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
     module = "neo-tree",
     cmd = "Neotree",
     requires = { "MunifTanjim/nui.nvim" },
@@ -111,7 +109,6 @@ local plugins = {
   -- Required by choose win feature of Neo tree
   {
     "s1n7ax/nvim-window-picker",
-    tag = "v1.*",
     config = function()
       require("window-picker").setup()
     end,
@@ -142,7 +139,6 @@ local plugins = {
       ts_update()
     end,
     event = { "BufRead", "BufNewFile" },
-    tag = "v0.7.2",
     cmd = {
       "TSInstall",
       "TSInstallInfo",
@@ -210,18 +206,18 @@ local plugins = {
   },
 
   -- LSP manager
+
   {
-    "williamboman/nvim-lsp-installer",
-    after = "nvim-lspconfig",
-    config = function()
-      require("configs.nvim-lsp-installer").config()
-    end,
+    "williamboman/mason.nvim",
+    requires = {
+      "williamboman/mason-lspconfig.nvim"
+    },
+    setup = require("configs.lsp.init").setup()
   },
 
   -- LSP symbols
   {
     "stevearc/aerial.nvim",
-    branch = "nvim-0.5",
     module = "aerial",
     cmd = { "AerialToggle", "AerialOpen", "AerialInfo" },
     config = function()
@@ -301,7 +297,6 @@ local plugins = {
   -- Terminal
   {
     "akinsho/nvim-toggleterm.lua",
-    tag = "v1.*",
     cmd = "ToggleTerm",
     module = { "toggleterm", "toggleterm.terminal" },
     config = function()
@@ -420,7 +415,6 @@ local plugins = {
   {
     "folke/todo-comments.nvim",
     event = "BufEnter",
-    branch = "neovim-pre-0.8.0",
     config = function()
       require("todo-comments").setup {
         -- your configuration comes here
@@ -474,30 +468,7 @@ local plugins = {
   },
 
   --
-
-  {
-    "~/dev/workspace/runthis.nvim",
-  },
-
-  -- {
-  --   "gelfand/copilot.vim",
-  --   config = function()
-  --     vim.g.copilot_no_tab_map = true
-  --     vim.g.copilot_assume_mapped = true
-  --     vim.g.copilot_filetypes = {
-  --       ["*"] = false,
-  --       ["javascript"] = true,
-  --       ["typescript"] = true,
-  --       ["lua"] = true,
-  --       ["rust"] = true,
-  --       ["c"] = true,
-  --       ["c#"] = true,
-  --       ["c++"] = true,
-  --       ["go"] = true,
-  --       ["python"] = true,
-  --     }
-  --   end
-  -- },
+  
 }
 
 local packer = utils.initialize_packer()
