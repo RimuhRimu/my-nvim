@@ -1,3 +1,3 @@
-# Simple config of my nvim setup
+# config of my nvim setup
 
-modify as much as you want!
+this is actually my old config

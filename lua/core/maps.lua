@@ -52,8 +52,8 @@ map("n", "<leader><leader>l", "<cmd>JsDocFormat<cr>", { desc = "Format js" })
 -- Hop
 
 map("n", "<leader><leader>w", "<cmd>HopWord<cr>", { desc = "Hop word" })
-map("n", "<leader><leader>bc", "<cmd>HopWordBC<cr>", { desc = "Hop word before cursor" })
-map("n", "<leader><leader>ac", "<cmd>HopWord<cr>", { desc = "Hop word after cursor" })
+map("n", "<leader><leader>b", "<cmd>HopWordBC<cr>", { desc = "Hop word before cursor" })
+map("n", "<leader><leader>a", "<cmd>HopWord<cr>", { desc = "Hop word after cursor" })
 map("n", "<leader><leader>p", "<cmd>HopPattern<cr>", { desc = "Hop Pattern" })
 
 -- Bufdelete
@@ -138,9 +138,8 @@ if utils.is_available "neovim-session-manager" then
 end
 
 -- LSP Installer
-if utils.is_available "nvim-lsp-installer" then
-  map("n", "<leader>lp", "<cmd>Mason<cr>", { desc = "LSP installer" })
-end
+map("n", "<leader>lI", "<cmd>Mason<cr>", { desc = "LSP installer" })
+map("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP info" })
 
 -- Smart Splits
 if utils.is_available "smart-splits.nvim" then
